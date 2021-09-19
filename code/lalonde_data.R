@@ -47,8 +47,8 @@ print(se.overall)
 
 
 ######## steps 2-5: full matching ###########
-full.out <- matchit(treat ~ age + educ + black + hisp + married + 
-                      + nodegr + re74 + re75, data = lalonde, 
+full.out <- matchit(treat ~ age + educ + hisp + 
+                      married + nodegr + re75 + u74 + u75, data = lalonde, 
                     method = "full", estimand = "ATE") 
 
 print(full.out)
@@ -57,7 +57,7 @@ bal.tab(full.out, thresholds = c(m=0.1))
 love.plot(full.out, binary = "std", thresholds = c(m = 0.1))
 
 fit.full <- lm(re78 ~ treat + age + educ + hisp + 
-              married + nodegr + re75 + u74 + u75,
+                 married + nodegr + re75 + u74 + u75,
             data = match.data(full.out))
 summary(fit.full)
 confint(fit.full)[2,]
@@ -65,8 +65,8 @@ confint(fit.full)[2,]
 
 ######## steps 2-5: weighting ###########
 library(WeightIt)
-w.out <- weightit(treat ~ age + educ + black + hisp + married +
-                    re74 + re75, data = lalonde, estimand = "ATE", 
+w.out <- weightit(treat ~ age + educ + hisp + 
+                    married + nodegr + re75 + u74 + u75, data = lalonde, estimand = "ATE", 
                   method = "ps")
 summary(w.out)
 
