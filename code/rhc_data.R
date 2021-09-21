@@ -22,7 +22,7 @@ bal.tab(treatment ~ ARF + CHF + Cirr + colcan + Coma + lungcan +
 library(MatchIt)
 m.out <- matchit(treatment ~ ARF + CHF + Cirr + colcan + Coma + lungcan +
                    MOSF + sepsis + age + female, data = rhc,
-                 method = "full", estimand = ATE) # it may take time..
+                 method = "full", estimand = "ATE") # it may take time..
 print(summary(m.out, standardize = TRUE))
 
 ## weighting

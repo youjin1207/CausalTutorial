@@ -52,7 +52,7 @@ full.out <- matchit(treat ~ age + educ + hisp +
                     method = "full", estimand = "ATE") 
 
 print(full.out)
-print(summary(m.out, standardize = TRUE))
+print(summary(full.out, standardize = TRUE))
 bal.tab(full.out, thresholds = c(m=0.1))
 love.plot(full.out, binary = "std", thresholds = c(m = 0.1))
 
